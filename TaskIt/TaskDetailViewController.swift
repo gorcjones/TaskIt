@@ -23,6 +23,8 @@ class TaskDetailViewController: UIViewController {
         println(self.detailTaskModel.task)
         self.taskTextField.text = detailTaskModel.task
         self.subTaskTextField.text = detailTaskModel.subTask
+        self.dueDatePicker.date = detailTaskModel.date
+        
 
         // Do any additional setup after loading the view.
     }
