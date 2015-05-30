@@ -26,6 +26,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         taskArray = [task1, task2, TaskModel(task: "Gym", subTask: "Leg day", date: date3)]
         self.tableView.reloadData()
     }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,8 +42,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let indexPath = self.tableView.indexPathForSelectedRow()
             let thisTask = taskArray[indexPath!.row]
             detailVC.detailTaskModel = thisTask
+            detailVC.mainVC = self
+        }
+        else if segue.identifier == "showTaskAdd" {
+            let addTaskVC = segue.destinationViewController as! addTaskViewController
+            addTaskVC.mainVC = self
         }
     }
+    
+    @IBAction func addButtonTapped(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("showTaskAdd", sender: self)
+    }
+    
     
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
