@@ -28,6 +28,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        taskArray = taskArray.sorted{(taskOne:TaskModel, taskTwo:TaskModel) -> Bool in
+            //comparison
+            return taskOne.date.timeIntervalSince1970 < taskTwo.date.timeIntervalSince1970
+            }
+        
         self.tableView.reloadData()
     }
 
@@ -77,6 +83,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         println(indexPath.row)
         performSegueWithIdentifier("showTaskDetail", sender: self)
     }
+    
+    //helpers
+
 
 
 }
