@@ -103,6 +103,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return "Completed"
         }
     }
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String! {
+        if indexPath.section == 0 {
+            return "Complete"
+        }
+        else {
+            return "UnComplete"
+        }
+    }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         let thisTask = baseArray[indexPath.section][indexPath.row]
