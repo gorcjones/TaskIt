@@ -11,7 +11,7 @@ import CoreData
 
 class addTaskViewController: UIViewController {
     
-    var mainVC: ViewController!
+
     
     @IBOutlet weak var taskTextField: UITextField!
     @IBOutlet weak var subTaskTextField: UITextField!
